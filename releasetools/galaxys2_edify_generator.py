@@ -26,15 +26,20 @@ class EdifyGenerator(edify_generator.EdifyGenerator):
       destination file."""
       self.script.append('package_extract_file("%s", "%s");' % (src, dst))
 
+    def FlashSuperSU(self):
+      self.script.append('package_extract_dir("supersu", "/tmp/supersu");')
+      self.script.append('run_program("/sbin/busybox", "unzip", "/tmp/supersu/supersu.zip", "META-INF/com/google/android/*", "-d", "/tmp/supersu");')
+      self.script.append('run_program("/sbin/busybox", "sh", "/tmp/supersu/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/supersu/supersu.zip");')
+
     def EMMCWriteRawImage(self, partition, image):
       """Write the given package file into the given partition."""
 
       args = {'partition': partition, 'image': image}
 
       self.script.append(
-            ('assert(package_extract_file("%(image)s", "/tmp/%(image)s"),\n'
-             '       write_raw_image("/tmp/%(image)s", "%(partition)s"),\n'
-             '       delete("/tmp/%(image)s"));') % args)
+            ('assert(package_extract_file("%(partition)s", "/tmp/%(partition)s"));\n'
+             'write_raw_image("/tmp/%(partition)s", "%(image)s");\n'
+             'delete("/tmp/%(partition)s");') % args)
 
     def Unmount(self, mount_point):
       """Unmount the partition with the given mount_point."""

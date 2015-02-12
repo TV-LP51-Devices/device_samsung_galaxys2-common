@@ -69,8 +69,19 @@ def WriteFullOTAPackage(input_zip, output_zip):
     script.RunBackup("backup")
     script.Unmount("/system")
 
+  system_progress = 0.75
+
   script.ShowProgress(0.5, 0)
 
+  script.Print("#           ( (                   #");
+  script.Print("#      ( ( ) )\( )\ ) (           #");
+  script.Print("#   )\ )\( /(((_)\ (()/( ))\ (    #");
+  script.Print("# ((_)((_)(_))_((_) ((_))((_))\   #");
+  script.Print("#  \ \ / ((_)_| |(_) _| (_))(((_) #");
+  script.Print("#   \ V // _` | || / _` | || (_-< #");
+  script.Print("#    \_/ \__,_|_||_\__,_|\_,_/__/ #");
+  script.Print("#         Validus-Lollipop        #");
+  
   if OPTIONS.wipe_user_data:
     script.FormatPartition("/data")
     script.Unmount("/system")
@@ -94,8 +105,17 @@ def WriteFullOTAPackage(input_zip, output_zip):
     script.ShowProgress(0.2, 10)
     script.RunBackup("restore")
 
+#  if block_based:
+    script.Print("Flashing SuperSU...")
+    common.ZipWriteStr(output_zip, "supersu/supersu.zip",
+                   ""+input_zip.read("SYSTEM/addon.d/UPDATE-SuperSU.zip"))
+    script.Mount("/system")
+    script.FlashSuperSU()
+#  if block_based:
+    script.Unmount("/system")
+
   script.ShowProgress(0.2, 10)
-  script.EMMCpackageextractfile("boot.img", "/dev/block/mmcblk0p5")
+  script.EMMCWriteRawImage("boot.img", "/dev/block/mmcblk0p5")
 
   script.ShowProgress(0.1, 0)
   device_specific.FullOTA_InstallEnd()
