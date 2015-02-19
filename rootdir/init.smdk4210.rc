@@ -344,9 +344,6 @@ on boot
     setprop status.battery.level_raw  50
     setprop status.battery.level_scale 9
 
-# Wifi display
-    write /proc/sys/net/core/wmem_max   262144
-
 # For RIL
 service cpboot-daemon /sbin/cbd -d -p 8
     class main
@@ -456,4 +453,3 @@ service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1
 service fuse_usbdisk0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdisk0 /storage/usbdisk0
     class late_start
     disabled
-
