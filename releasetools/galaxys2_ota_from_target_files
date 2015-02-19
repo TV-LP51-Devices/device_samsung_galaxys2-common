@@ -53,6 +53,8 @@ def WriteFullOTAPackage(input_zip, output_zip):
                                              OPTIONS.info_dict),
               }
 
+  script.Print("                                   ");
+  script.Print("                                   ");
   script.Print("#           ( (                   #");
   script.Print("#      ( ( ) )\( )\ ) (           #");
   script.Print("#   )\ )\( /(((_)\ (()/( ))\ (    #");
@@ -61,8 +63,6 @@ def WriteFullOTAPackage(input_zip, output_zip):
   script.Print("#   \ V // _` | || / _` | || (_-< #");
   script.Print("#    \_/ \__,_|_||_\__,_|\_,_/__/ #");
   script.Print("#         Validus-Lollipop        #");
-  script.Print("                                   ");
-  script.Print("                                   ");
   script.Print("                                   ");
   script.Print("                                   ");
   script.Print("                                   ");
@@ -117,13 +117,14 @@ def WriteFullOTAPackage(input_zip, output_zip):
                    ""+input_zip.read("SYSTEM/addon.d/Camera2.apk"))
 
 #  if block_based:
-    script.Print("Flashing SuperSU...")
     common.ZipWriteStr(output_zip, "supersu/supersu.zip",
                    ""+input_zip.read("SYSTEM/addon.d/UPDATE-SuperSU.zip"))
-    script.Mount("/system")
+#    script.Mount("/system")
+    script.Print("Flashing SuperSU...")
     script.FlashSuperSU()
+    script.Print("SuperSU flashed successfuly")
 #  if block_based:
-    script.Unmount("/system")
+#    script.Unmount("/system")
 
   script.ShowProgress(0.2, 10)
   script.EMMCWriteRawImage("boot.img", "/dev/block/mmcblk0p5")
