@@ -37,7 +37,7 @@ __doc__ = ota_from_target_files.__doc__
 
 def CopyBootFiles(input_zip, output_zip):
     output_zip.write(os.path.join(TARGET_DIR, "boot.img"),"boot.img")
-    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/Camera2.apk"),"system/addon.d/Camera2.apk")
+#    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/Camera2.apk"),"system/addon.d/Camera2.apk")
 
 def WriteFullOTAPackage(input_zip, output_zip):
   # TODO: how to determine this?  We don't know what version it will
@@ -113,8 +113,8 @@ def WriteFullOTAPackage(input_zip, output_zip):
     script.RunBackup("restore")
 
     #copy kk camera
-    common.ZipWriteStr(output_zip, "system/app/Camera2/Camera2.apk",
-                   ""+input_zip.read("SYSTEM/addon.d/Camera2.apk"))
+#    common.ZipWriteStr(output_zip, "system/app/Camera2/Camera2.apk",
+#                   ""+input_zip.read("SYSTEM/addon.d/Camera2.apk"))
 
 #  if block_based:
     common.ZipWriteStr(output_zip, "supersu/supersu.zip",
