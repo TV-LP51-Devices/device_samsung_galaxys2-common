@@ -170,7 +170,6 @@ BOARD_SEPOLICY_UNION += \
     drmserver.te \
     file.te \
     init.te \
-    install_recovery.te \
     kernel.te \
     kickstart.te \
     lcd_device.te \
