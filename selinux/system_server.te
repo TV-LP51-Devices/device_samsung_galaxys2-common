@@ -8,3 +8,6 @@ allow system_server sensors_device:chr_file { read write };
 allow system_server unlabeled:file write;
 allow system_server lcd_device:file { read write open ioctl getattr };
 allow system_server vibe_device:file { read write open ioctl getattr };
+allow system_server recovery_cache_file:dir { relabelfrom create_dir_perms };
+allow system_server recovery_cache_file:file { relabelfrom create_file_perms };
+
