@@ -201,7 +201,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.isUsbOtgEnabled=true
 
 # Low RAM properties
-MALLOC_IMPL := dlmalloc
+# MALLOC_IMPL := dlmalloc
 
 # Include exynos4 platform specific parts
 TARGET_HAL_PATH := hardware/samsung/exynos4/hal
