@@ -38,6 +38,19 @@ __doc__ = ota_from_target_files.__doc__
 def CopyBootFiles(input_zip, output_zip):
     output_zip.write(os.path.join(TARGET_DIR, "boot.img"),"boot.img")
 #    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/Camera2.apk"),"system/addon.d/Camera2.apk")
+    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/system/etc/init.d/000tweaks"),"system/etc/init.d/000tweaks")
+    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/system/media/audio/notifications/!Dexter_Sms_Qsy.ogg"),"system/media/audio/notifications/!Dexter_Sms_Qsy.ogg")
+    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/system/media/audio/notifications/!Electronic_Ring.ogg"),"system/media/audio/notifications/!Electronic_Ring.ogg")
+    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/system/media/audio/notifications/!Exclusive_Sms.ogg"),"system/media/audio/notifications/!Exclusive_Sms.ogg")
+    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/system/media/audio/notifications/!Excuse_Me_Boss.ogg"),"system/media/audio/notifications/!Excuse_Me_Boss.ogg")
+    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/system/media/audio/notifications/!Facebook_Message.ogg"),"system/media/audio/notifications/!Facebook_Message.ogg")
+    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/system/media/audio/notifications/!Galaxy_S5_Sms.ogg"),"system/media/audio/notifications/!Galaxy_S5_Sms.ogg")
+    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/system/media/audio/notifications/!Intel.ogg"),"system/media/audio/notifications/!Intel.ogg")
+    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/system/media/audio/notifications/!ios7_Cute_Sms.ogg"),"system/media/audio/notifications/!ios7_Cute_Sms.ogg")
+    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/system/media/audio/notifications/!message_tone.ogg"),"system/media/audio/notifications/!message_tone.ogg")
+    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/system/media/audio/notifications/!Windows.ogg"),"system/media/audio/notifications/!Windows.ogg")
+    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/system/media/audio/notifications/!Nokia_Message.ogg"),"system/media/audio/notifications/!Nokia_Message.ogg")
+    output_zip.write(os.path.join(LOCAL_DIR, "../i9100/prebuilt/system/media/audio/notifications/!Spica.ogg"),"system/media/audio/notifications/!Spica.ogg")
 
 def WriteFullOTAPackage(input_zip, output_zip):
   # TODO: how to determine this?  We don't know what version it will
